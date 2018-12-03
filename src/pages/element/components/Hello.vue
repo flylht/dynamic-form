@@ -179,7 +179,7 @@ export default {
             "editable":false,//文本框是否可输入
             "viewFormat":"yyyy 年 MM 月 dd 日",//显示的格式
             "valueFormat":"yyyy-MM-dd",//返回值的格式
-            "value": "2018-10-10"
+            "value": "2018-10-12"
           }],
           [{
             "type": "datetime",
