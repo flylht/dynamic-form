@@ -1,0 +1,20 @@
+tmp/
+.DS_Store
+node_modules/
+dist/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/src/components/fun/axiosServer.js
+
+# publish
+publish/publish-*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
