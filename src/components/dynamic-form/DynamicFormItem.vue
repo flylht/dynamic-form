@@ -1,7 +1,9 @@
 <template>
   <el-form-item :label="item.label" :prop="item.key" :class="{'block':item.block}">
 
-    <el-input v-if="item.type==='input'"  :type="item.subtype" :placeholder="item.placeholder" :disabled="item.disable" :readonly="item.readonly" :autosize="item.autosize" v-bind="$attrs" v-on="$listeners"></el-input>
+    <el-input v-if="item.type==='input'"  :type="item.subtype" :placeholder="item.placeholder" :disabled="item.disable" :readonly="item.readonly" :autosize="item.autosize" v-bind="$attrs" v-on="$listeners">
+      <template v-if="item.isSlot" :slot="item.slot">{{item.slotVal}}</template>
+    </el-input>
 
     <el-checkbox v-else-if="item.type==='switch' && item.appearance==='checkbox'" :disabled="item.disabled" v-bind="$attrs" v-on="$listeners"></el-checkbox>
     <el-switch v-else-if="item.type==='switch'" :disabled="item.disabled" v-bind="$attrs" v-on="$listeners"></el-switch>
@@ -25,7 +27,7 @@
         :label="o.value" :border="item.border">{{o.label}}</component>
     </el-checkbox-group>
 
-    <el-select v-else-if="item.type==='select'" :multiple="item.multiple" :disabled="item.disabled" :multiple-limit="item.multipleLimit" v-bind="$attrs" v-on="$listeners">
+    <el-select v-else-if="item.type==='select'" :multiple="item.multiple" :disabled="item.disabled" :popper-class="item.popperClass" :multiple-limit="item.multipleLimit" v-bind="$attrs" v-on="$listeners">
       <el-option v-for="o in item.options" :key="o.value" :label="o.label" :value="o.value" :disabled="o.disabled">
       </el-option>
     </el-select>
@@ -35,6 +37,26 @@
     <el-date-picker v-else-if="item.type==='date'" :type="item.subtype" range-separator="至" start-placeholder="开始时间" end-placeholder="结束时间" :value-format="item.valueFormat" :format="item.viewFormat||item.valueFormat" :placeholder="item.placeholder" :disabled="item.disabled" v-bind="$attrs" v-on="$listeners"></el-date-picker>
 
     <el-date-picker v-else-if="item.type==='datetime'" :type="item.subtype" :size="item.size" range-separator="至" start-placeholder="开始时间" end-placeholder="结束时间" :default-time="item.defaultTime" :value-format="item.valueFormat" :format="item.viewFormat||item.valueFormat" :placeholder="item.placeholder" :disabled="item.disabled" :editable="item.editable" v-bind="$attrs" v-on="$listeners"></el-date-picker>
+
+    <el-upload v-else-if="item.type==='upload'"
+      :action="item.action"
+      :on-preview="item.handlePreview"
+      :on-remove="item.handleRemove"
+      :on-exceed="item.handleExceed"
+      :on-success="item.handleSuccess"
+      :on-change="item.handleChange"
+      :before-upload="item.beforeUpload"
+      :before-remove="item.beforeRemove"
+      :http-request="item.httpRequest"
+      :limit="item.limit"
+      :show-file-list="item.showFileList||false"
+      :file-list="item.fileList"
+      :list-type="item.listType"
+      v-bind="$attrs" v-on="$listeners">
+        <div v-if="item.isShowTxt" :class="item.imgTxtClass">{{item.imgTxtVal}}</div>
+        <el-button :size="item.btnSize" type="primary" :loading="item.loading" :class="item.btnClass">{{item.btnVal}}</el-button>
+        <div slot="tip" v-if="item.isShowTip" :class="item.tipClass">{{item.tipVal}}</div>
+    </el-upload>
 
     <span v-else>未知控件类型</span>
 
