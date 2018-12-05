@@ -3,6 +3,7 @@
 
     <el-input v-if="item.type==='input'"  :type="item.subtype" :placeholder="item.placeholder" :disabled="item.disable" :readonly="item.readonly" :autosize="item.autosize" v-bind="$attrs" v-on="$listeners">
       <template v-if="item.isSlot" :slot="item.slot">{{item.slotVal}}</template>
+      <el-button v-if="item.isBtnSlot" :slot="item.btnSlot" :class="item.btnClass" :icon="item.btnIcon">{{item.btnTxt}}</el-button>
     </el-input>
 
     <el-checkbox v-else-if="item.type==='switch' && item.appearance==='checkbox'" :disabled="item.disabled" v-bind="$attrs" v-on="$listeners"></el-checkbox>

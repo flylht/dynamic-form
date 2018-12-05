@@ -61,6 +61,8 @@ export default {
             "isSlot":true,
             "slot":"prepend",
             "slotVal":"$",
+            // "isBtnSlot":true,
+            // "btnSlot":"prepend",
             "subtype": "text"
           },
           {
@@ -71,6 +73,11 @@ export default {
             "placeholder": "请输入名",
             "span":10,
             "key": "name1",
+            "isBtnSlot":true,
+            "btnSlot":"append",
+            "btnClass":"el-upload-btn-append",
+            "btnIcon":"el-icon-delete",//el-icon-delete
+            "btnTxt":"",
             "subtype": "text"
           }
           ],
@@ -308,5 +315,20 @@ export default {
   .hello >>> .el-upload-tip{
     font-size: 12px;
     color: #888;
+  }
+  .hello >>> .el-input-group__append{
+    background-color: #fff;
+    color: #909399;
+    right: -3px;
+    border-left: 1px solid #dcdfe6;
+    border-radius: 2px;
+    padding: 0 10px;
+  }
+  .hello >>> .el-upload-btn-append{
+    font-size: 14px;
+  }
+  .hello >>> .el-input-group__append:hover{
+    color: #900;
+    border-color:#900;
   }
 </style>
