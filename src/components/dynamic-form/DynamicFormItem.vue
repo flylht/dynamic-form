@@ -1,7 +1,7 @@
 <template>
   <el-form-item :label="item.label" :prop="item.key" :class="{'block':item.block}">
 
-    <el-input v-if="item.type==='input'"  :type="item.subtype" :placeholder="item.placeholder" :disabled="item.disable" :readonly="item.readonly" :autosize="item.autosize" v-bind="$attrs" v-on="$listeners">
+    <el-input v-if="item.type==='input'"  :type="item.subtype" :placeholder="item.placeholder" :disabled="item.disabled" :readonly="item.readonly" :autosize="item.autosize" v-bind="$attrs" v-on="$listeners">
       <template v-if="item.isSlot" :slot="item.slot">{{item.slotVal}}</template>
       <el-button v-if="item.isBtnSlot" :slot="item.btnSlot" :class="item.btnClass" :icon="item.btnIcon">{{item.btnTxt}}</el-button>
     </el-input>

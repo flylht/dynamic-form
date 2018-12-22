@@ -58,6 +58,7 @@ export default {
             "placeholder": "请输入姓",
             "span":10,//占位的列数，共24列
             "key": "name",
+            "disabled": true,
             "isSlot":true,
             "slot":"prepend",
             "slotVal":"$",
@@ -96,7 +97,7 @@ export default {
             "label": "性别",
             "value": "0",
             "button": false,
-            "border": false,
+            "border": true,
             "span": 10,
             "key": "gender",
             "callback":(ret)=>{debugger;},
@@ -115,7 +116,7 @@ export default {
             "label": "开关",
             "key": "lock",
             "span": 10,
-            "value": false
+            "value": true
           }],
           [{
             "type": "radio",
